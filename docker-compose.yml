@@ -1,0 +1,23 @@
+version: '2'
+services:
+  redis:
+    image: "redis:alpine"
+  neo4j:
+    image: neo4j:latest
+    ports: 
+      - '7474:7474'
+      - '7687:7687'
+    volumes: 
+      - $HOME/neo4j/import:/var/lib/neo4j/import
+  nozama-products:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-node
+    ports:
+     - "88:3000"
+    depends_on:
+      - redis
+      - neo4j
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - REDIS_HOST=0
