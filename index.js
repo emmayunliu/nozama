@@ -1,6 +1,6 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const router = require('./server/routes');
 
 const server = express();
