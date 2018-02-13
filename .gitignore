@@ -89,6 +89,6 @@ package-lock.json
 .vscode
 
 # newrelic, performance
-newrelic
-performance
+newrelic.js
+performance.js
 
