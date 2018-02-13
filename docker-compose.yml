@@ -20,4 +20,4 @@ services:
       - neo4j
     environment:
       - REDIS_URL=redis://redis:6379
-      - REDIS_HOST=0
+      - REDIS_HOST=

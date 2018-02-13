@@ -9,12 +9,12 @@ const redisClient = redis.createClient({
 });
 const getAsync = promisify(redisClient.get).bind(redisClient);
 const neo = require('./neo');
-
+// cache product recommendation for a particular product in redis
 const updateRecommend = async (id, type) => {
   const result = await neo.getRecommendByProduct(id);
   redisClient.set(`${type}${id}`, JSON.stringify(result), redis.print);
 };
-
+// product recommendation for a particular product in redis and return a default one if not exists
 const getRecommendByProduct = async (id) => {
   const res = await getAsync(`p${id}`);
   if (res === null) {
@@ -23,7 +23,7 @@ const getRecommendByProduct = async (id) => {
   }
   return res;
 };
-
+// product recommendation for a particular user in redis and return a default one if not exists
 const getRecommendByUser = async (id) => {
   const res = await getAsync(`u${id}`);
   if (res === null) {

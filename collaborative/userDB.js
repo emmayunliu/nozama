@@ -1,3 +1,4 @@
+// get user analytic data from user service
 const mysql = require('mysql');
 
 const connection = mysql.createPool({

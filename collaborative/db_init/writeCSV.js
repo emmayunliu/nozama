@@ -38,13 +38,13 @@ const createRelation = async (n, fileName) => {
     ],
   });
   const records = [];
-  for (let i = 1; i < n + 1; i++) {
-    const user_id = Math.floor(Math.random() * 1000000);
-    const product_id = Math.floor(Math.random() * 3000);
-    records.push({ user_id, product_id });
+  for (let i = 1; i < n + 1; i += 1) {
+    const user = Math.floor(Math.random() * 1000000);
+    const product = Math.floor(Math.random() * 3000);
+    records.push({ user, product });
     bar1.update(i);
   }
-  csvWriter.writeRecords(await records) // returns a promise
+  csvWriter.writeRecords(await records)
     .then(() => {
       console.log('...Done');
     });

@@ -1,3 +1,4 @@
+// get product analytic data from product service
 const mysql = require('mysql');
 
 const connection = mysql.createPool({
